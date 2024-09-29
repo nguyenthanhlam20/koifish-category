@@ -1,0 +1,91 @@
+@model IEnumerable<KoiDeliveryOrderSystem.Models.FishCategory>
+
+@{
+    ViewData["Title"] = "List fish category";
+}
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<div class="d-flex justify-content-between align-items-center">
+    <h2>List fish category</h2>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</div>
+<hr/>
+
+@if(Model.Any())
+{
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FishName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MinSize)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaxSize)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MinPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaxPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Breed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Origin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FishName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MinSize)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaxSize)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MinPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaxPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Breed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Origin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td class="text-center">
+                        <a  asp-action="Edit" asp-route-id="@item.FishTypeId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.FishTypeId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.FishTypeId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+} else
+{
+    <h6 class="text-warning">There are no fish categories. Please create new.</h6>
+}
